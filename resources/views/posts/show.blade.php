@@ -12,6 +12,7 @@
                 @if($post->messages->count() > 0)
                     @foreach($post->messages as $message)
                         <div class="card">
+                            <h1 class="title is-6">{{ $message->user->name }}</h1>
                             <p>{{ $message->message }}</p>
                         </div>
                     @endforeach
@@ -20,20 +21,20 @@
                 @endif
             </div>
 
-            <div>
-                <h3 class="title is-4">Commenter</h3>
-
-                <form method="post" action="{{ route('comment.store') }}">
-                    @csrf
-                    <div class="field">
-                        <label class="label">Message</label>
-                        <div class="control">
-                            <textarea class="textarea" name="content" placeholder="Textarea"></textarea>
+            @auth
+                <div>
+                    <form method="post" action="{{ route('comment.store', ['id' => $post->id ]) }}">
+                        @csrf
+                        <div class="field">
+                            <label class="label">Commenter</label>
+                            <div class="control">
+                                <textarea class="textarea" name="message" placeholder="Textarea"></textarea>
+                            </div>
+                            <button type="submit" class="button is-primary mt-3">Commenter</button>
                         </div>
-                        <button type="submit" class="button is-primary mt-3">Commenter</button>
-                    </div>
-                </form>
-            </div>
+                    </form>
+                </div>
+            @endauth
         </div>
     </div>
 @endsection

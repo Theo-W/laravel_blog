@@ -28,5 +28,5 @@ Route::get('/post/{id}', [App\Http\Controllers\PostController::class, 'show'])->
 Route::get('/post/delete/{id}', [App\Http\Controllers\PostController::class, 'delete'])->name('posts.delete');
 
 // routes message
-Route::post('/post/create/message', [App\Http\Controllers\MessagesController::class, 'store'])->name('comment.store');
+Route::post('/post/{id}/create/message', [App\Http\Controllers\MessagesController::class, 'store'])->name('comment.store');
 

@@ -47,10 +47,6 @@ class PostController extends Controller
             'content' => $request->content
         ]);
 
-        Messages::create([
-            'content' => $request->content,
-        ]);
-
         return redirect()->route('posts.index');
     }
 
