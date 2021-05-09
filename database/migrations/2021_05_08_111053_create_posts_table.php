@@ -17,6 +17,7 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('content');
+            $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
     }

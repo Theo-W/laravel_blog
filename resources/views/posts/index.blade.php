@@ -10,19 +10,19 @@
         <div>
             @if($posts->count() > 0 )
                 @foreach($posts as $post)
-                    <div class="card">
-                        <div class="card-header">
-                            <h2>{{ $post->name }}</h2>
+                    <div class="card" style="border-bottom: #a1a4aa 1px solid">
+                        <div class="card-content">
+                            <h1>{{ $post->user->name }}</h1>
+                            <a href="{{route('posts.show', ['id' => $post->id ])}}">{{ $post->name }}</a>
                         </div>
-                        <div class="card_content">
-                            <p>{{ $post->content }}</p>
-                        </div>
-                        <div class="car-footer">
-                            <a href="{{route('posts.show', ['id' => $post->id ])}}" class="button is-primary">Voir le
-                                post</a>
-                            <a href="{{route('posts.edit', ['id' => $post->id ])}}" class="button is-link">Modfier</a>
-                            <a href="{{route('posts.delete', ['id' => $post->id ])}}"
-                               class="button is-danger">Supprimer</a>
+
+                        <div class="card-footer">
+                            @if($post->user->id === Auth::id())
+                                <a href="{{route('posts.edit', ['id' => $post->id ])}}"
+                                   class="has-text-link mr-2">Modfier</a>
+                                <a href="{{route('posts.delete', ['id' => $post->id ])}}"
+                                   class="has-text-danger">Supprimer</a>
+                            @endif
                         </div>
                     </div>
                 @endforeach
