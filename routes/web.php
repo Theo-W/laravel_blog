@@ -30,3 +30,5 @@ Route::get('/post/delete/{id}', [App\Http\Controllers\PostController::class, 'de
 // routes message
 Route::post('/post/{id}/create/message', [App\Http\Controllers\MessagesController::class, 'store'])->name('comment.store');
 
+//profiler
+Route::get('/profiler', [\App\Http\Controllers\ProfilerController::class, 'index'])->name('profiller');

@@ -56,7 +56,7 @@
                                 </a>
                             @endif
                             @else
-                                <a id="navbarDropdown" class="button is-primary" href="#" role="button"
+                                <a id="navbarDropdown" class="button is-primary" href="{{ route('profiller') }}" role="button"
                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
