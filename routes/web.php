@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\ProfilerController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -31,4 +33,9 @@ Route::get('/post/delete/{id}', [App\Http\Controllers\PostController::class, 'de
 Route::post('/post/{id}/create/message', [App\Http\Controllers\MessagesController::class, 'store'])->name('comment.store');
 
 //profiler
-Route::get('/profiler', [\App\Http\Controllers\ProfilerController::class, 'index'])->name('profiller');
+Route::get('/profiler', [ProfilerController::class, 'index'])->name('profiller');
+
+// admin
+Route::middleware('admin')->group(function () {
+    Route::get('/admin/home', [AdminController::class, 'index'])->name('admin.index');
+});
